@@ -1,11 +1,12 @@
 # Case Técnico — Engenharia de Dados
 
 <div align="center">
-  <img src="https://shields.io" alt="SQL" />
-  <img src="https://shields.io" alt="Python" />
-  <img src="https://shields.io" alt="Jupyter" />
-  <img src="https://shields.io" alt="Pandas" />
+  <img src="https://hermes.dio.me/articles/cover/75ce44d7-3f12-449f-bc8c-fc13f28781a2.jpg" alt="SQL" height="60" />
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1280px-Python-logo-notext.svg.png" alt="Python" height="60" />
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/1280px-Jupyter_logo.svg.png" alt="Jupyter" height="60" />
+  <img src="https://aster.cloud/wp-content/uploads/2019/10/python-pandas-install-cover.jpg" alt="Pandas" height="60" />
 </div>
+
 
 ## 📌 Sobre o Desafio
 
@@ -34,7 +35,7 @@ As soluções foram desenhadas sob os seguintes pilares:
 ├── notebook/
 │   └── modelo_teste.ipynb
 ├── .gitignore
-├── FIEMG-ValidacaoLayouts-v1....
+├── FIEMG-LayoutsValidations-v1.xlsx
 ├── README.md
 └── requirements.txt
 ```
