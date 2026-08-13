@@ -1,155 +1,100 @@
-# Teste Técnico — Engenharia de Dados
+# Case Técnico — Engenharia de Dados
 
-## Sobre o desafio
+<div align="center">
+  <img src="https://shields.io" alt="SQL" />
+  <img src="https://shields.io" alt="Python" />
+  <img src="https://shields.io" alt="Jupyter" />
+  <img src="https://shields.io" alt="Pandas" />
+</div>
 
-Este repositório contém a resolução do teste técnico para a posição de Engenheiro(a) de Dados.
+## 📌 Sobre o Desafio
 
-O desafio consiste na resolução de problemas de negócio utilizando SQL, com foco em:
+Este repositório contém a resolução de um case técnico focado em **Engenharia de Dados**. O objetivo principal é solucionar problemas complexos de negócio utilizando **SQL**, demonstrando maturidade analítica e boas práticas de desenvolvimento.
 
-- Correção técnica;
-- Qualidade e legibilidade das queries;
-- Tratamento de dados;
-- Performance;
-- Uso de CTEs e window functions;
-- Raciocínio analítico;
-- Documentação das soluções.
+As soluções foram desenhadas sob os seguintes pilares:
+* **Correção Técnica e Performance:** Otimização de consultas para grandes volumes de dados.
+* **Qualidade de Código:** Queries limpas, legíveis e estruturadas com o uso de CTEs (*Common Table Expressions*).
+* **Tratamento de Dados:** Manipulação de valores nulos e prevenção de erros lógicos (como divisão por zero).
+* **Funções de Janela:** Uso avançado de *Window Functions* para análises granulares.
+* **Documentação:** Justificativa detalhada de cada premissa de negócio adotada.
 
-## Estrutura do projeto
+---
+
+## 📂 Estrutura do Projeto
 
 ```text
 .
+├── data/
+│   ├── buyers.csv
+│   ├── order_items.csv
+│   ├── orders.csv
+│   ├── payments.csv
+│   ├── products.csv
+│   └── sellers.csv
 ├── notebook/
 │   └── modelo_teste.ipynb
+├── .gitignore
+├── FIEMG-ValidacaoLayouts-v1....
 ├── README.md
-├── requirements.txt
-└── .gitignore
+└── requirements.txt
+```
 
+> ⚠️ **Nota sobre os dados:** Por motivos de conformidade e privacidade, os arquivos CSV originais fornecidos para o teste não foram integrados ao repositório padrão. Para executar o projeto localmente, certifique-se de que eles estejam inseridos na pasta `data/`.
 
-Dados
+---
 
-Os arquivos CSV utilizados na resolução foram fornecidos juntamente com o teste técnico.
+## 🛠️ Como Executar o Projeto
 
-Por se tratarem de arquivos disponibilizados para a realização do desafio, eles não estão versionados neste repositório.
+Siga os passos abaixo para configurar o ambiente virtual e rodar as análises:
 
-Para executar o notebook localmente, os arquivos devem estar disponíveis na pasta:
+### 1. Clonar o Repositório
+```bash
+git clone https://github.com
+cd Data-Engineering-26
+```
 
-data/
+### 2. Criar e Ativar o Ambiente Virtual
+* **Linux/macOS:**
+  ```bash
+  python -m venv .venv
+  source .venv/bin/activate
+  ```
+* **Windows:**
+  ```bash
+  python -m venv .venv
+  .venv\Scripts\activate
+  ```
 
-O arquivo auxiliar utilizado durante o desenvolvimento também não está versionado no repositório (podendo disponibilizar posteriormente).
-
-Como executar
-1. Clonar o repositório
-
-Após clonar o repositório:
-
-git clone <URL_DO_REPOSITORIO>
-cd FIEMG
-2. Criar o ambiente virtual
-
-No terminal:
-
-python -m venv .venv
-3. Ativar o ambiente virtual
-
-No Windows:
-
-.venv\Scripts\activate
-
-No Linux/macOS:
-
-source .venv/bin/activate
-4. Instalar as dependências
-
-Com o ambiente virtual ativado:
-
+### 3. Instalar as Dependências
+```bash
 pip install -r requirements.txt
-5. Disponibilizar os dados
+```
 
-Os arquivos CSV fornecidos para o teste devem ser disponibilizados na pasta:
+### 4. Executar o Notebook
+O arquivo principal de resolução está localizado em `notebook/modelo_teste.ipynb`. Você pode utilizá-lo via **Jupyter Notebook**, **JupyterLab** ou importá-lo no **Google Colab**.
 
-data/
-6. Executar o notebook
+---
 
-O notebook com as resoluções está localizado em:
+## 📊 Desafios Resolvidos
 
-notebook/teste_tecnico_engenharia_dados.ipynb
+| ID | Desafio | Foco Técnico | Regra de Negócio Aplicada |
+| :--- | :--- | :--- | :--- |
+| **1** | **Faturamento Mensal** | Agregações temporais e filtros de status | Métricas dos últimos 12 meses; apenas pedidos `completed` ou `delivered`. |
+| **2** | **Crescimento de GMV** | Comparações trimestrais (*MoM/QoQ*) | Filtro de qualidade: mínimo de 50 pedidos por trimestre para evitar distorções de *sellers* novos. |
+| **3** | **Descontos Abusivos** | Tratamento de nulos e proteção contra divisão por zero | Identificação de pedidos com desconto superior a 40% do valor bruto. Exclui cancelados. |
+| **4** | **Comportamento de Produtos** | *Window Functions* complexas e análise de qualidade | Produtos com mais de 1.000 unidades que nunca foram o item de maior valor unitário no pedido. |
 
-O notebook pode ser executado localmente utilizando Jupyter Notebook/JupyterLab ou pelo Google Colab.
+---
 
-Desafios
-Desafio 1 — Faturamento mensal
+## 🧠 Organização e Metodologia
 
-O objetivo é calcular o faturamento bruto mensal dos últimos 12 meses, considerando apenas pedidos com status completed ou delivered.
+Cada desafio possui uma seção dedicada dentro do notebook contendo:
+1. **Contextualização:** Entendimento macro do problema de negócio.
+2. **Query SQL:** Código fonte formatado e comentado.
+3. **Resultado:** Visualização dos dados retornados.
+4. **Raciocínio Analítico:** Explicação detalhada da lógica e das decisões técnicas tomadas.
 
-O resultado apresenta:
+---
 
-Faturamento bruto mensal;
-Quantidade de pedidos;
-Ticket médio;
-Período ordenado do mês mais recente para o mais antigo.
-
-A análise considera apenas pedidos válidos para faturamento, excluindo pedidos cancelados e reembolsados.
-
-Desafio 2 — Crescimento de GMV
-
-O objetivo é identificar os 10 sellers com maior crescimento de GMV entre o trimestre atual e o trimestre anterior.
-
-Para evitar distorções causadas por sellers novos ou com baixa atividade, são considerados apenas sellers que possuem pelo menos 50 pedidos em ambos os trimestres.
-
-O resultado apresenta:
-
-Nome do seller;
-Estado;
-GMV do trimestre anterior;
-GMV do trimestre atual;
-Percentual de crescimento.
-
-Os resultados são ordenados pelo maior percentual de crescimento.
-
-Desafio 3 — Descontos abusivos
-
-O objetivo é identificar pedidos nos quais o desconto total aplicado aos itens representa mais de 40% do valor bruto do pedido.
-
-Pedidos com status cancelled são excluídos da análise.
-
-O resultado apresenta:
-
-Identificação do pedido;
-Seller responsável;
-Data do pedido;
-Valor bruto do pedido;
-Valor total de desconto;
-Percentual de desconto.
-
-A análise também considera o tratamento de possíveis valores nulos e divisão por zero.
-
-Desafio 4 — Comportamento dos produtos
-
-O objetivo é identificar produtos que apresentam alto volume de vendas, mas que nunca aparecem como o item de maior valor unitário dentro de um pedido.
-
-São considerados produtos que:
-
-Possuem mais de 1.000 unidades vendidas;
-Nunca foram o item de maior valor unitário em nenhum pedido.
-
-Para identificar o item de maior valor unitário em cada pedido, são utilizadas Window Functions.
-
-Em situações de empate no maior valor unitário, os produtos empatados são considerados como itens de maior valor unitário.
-
-Além da consulta, são avaliadas possíveis limitações e questões relacionadas à qualidade e à viabilidade da análise.
-
-Organização das soluções
-
-Cada desafio está documentado diretamente no notebook, contendo:
-
-Contextualização do problema;
-Query SQL;
-Resultado da consulta;
-Explicação do raciocínio utilizado;
-Considerações sobre regras de negócio;
-Tratamento de possíveis problemas nos dados, quando aplicável.
-Observações
-
-As soluções foram desenvolvidas buscando equilibrar correção técnica, legibilidade, performance e clareza das regras de negócio.
-
-As principais premissas, decisões e considerações sobre os resultados estão documentadas diretamente no notebook.
+## 🔗 Link do Repositório
+Conheça mais sobre o meu trabalho: [GitHub — Data-Engineering-26](https://github.com)
