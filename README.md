@@ -229,11 +229,12 @@ A análise compara o GMV dos *sellers* entre trimestres.
 * A variação percentual é calculada em relação ao trimestre anterior.
 
 ### Desafio 3 — Descontos Abusivos
-O **Valor Bruto**  dos itens é calculado a partir de: 
-$$\text{quantidade} \times \text{unit\_price}$$
+### Desafio 3 — Descontos Abusivos
+O **Valor Bruto** dos itens é calculado a partir de: 
+`quantidade * unit_price`
 
 O desconto total é então comparado com o valor bruto do pedido através da regra:
-$$\text{Desconto Total} > 40\% \times \text{Valor Bruto}$$
+`Desconto Total > 40% * Valor Bruto`
 
 > ⚠️ Pedidos cancelados são explicitamente excluídos desta análise.
 
