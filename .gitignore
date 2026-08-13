@@ -1,0 +1,22 @@
+# Ambiente virtual
+.venv/
+
+# Dados fornecidos para o teste
+data/
+
+# Arquivo auxiliar feito por mim
+FIEMG-ValidacaoLayouts-v1.xlsx
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Arquivos de ambiente
+.env
+.env.*
+
+# VS Code
+.vscode/
